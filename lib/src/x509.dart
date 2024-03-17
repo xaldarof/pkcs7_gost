@@ -1,12 +1,14 @@
 import 'dart:typed_data';
 
 import 'package:pem/pem.dart';
-import 'package:pkcs7_gost/src/digest/ozdst1106_digest.dart';
+import 'package:pkcs7_gost/src/crypto/ozdst1106_digest.dart';
 import 'package:pointycastle/api.dart';
 import 'package:pointycastle/asn1.dart';
 import 'package:pointycastle/asymmetric/api.dart';
 import 'package:pointycastle/asymmetric/pkcs1.dart';
 import 'package:pointycastle/asymmetric/rsa.dart';
+import 'package:pointycastle/ecc/api.dart';
+import 'package:pointycastle/ecc/curves/prime256v1.dart';
 
 import 'common.dart';
 import 'x509_tbs.dart';
@@ -125,7 +127,7 @@ class X509 extends X509Tbs {
 
   /// Generate a signature for the message
   Uint8List generateSignature(
-    RSAPrivateKey privateKey,
+    BigInt privateKey,
     Uint8List message,
     HashAlgorithm digestAlgorithm,
   ) {
@@ -137,7 +139,7 @@ class X509 extends X509Tbs {
 
   /// Generate a signature for the message
   Uint8List generateSignatureOfHash(
-    RSAPrivateKey privateKey,
+    BigInt privateKey,
     Uint8List hash,
     HashAlgorithm digestAlgorithm,
   ) {
@@ -145,10 +147,11 @@ class X509 extends X509Tbs {
     final encodedHash = derEncode(hash, digestAlgorithm);
 
     // Encrypt the hash with PKCS1 padding
-    final param = PrivateKeyParameter<RSAPrivateKey>(privateKey);
-    final rsa = PKCS1Encoding(RSAEngine());
-    rsa.init(true, param);
-    return rsa.process(encodedHash);
+    final param = PrivateKeyParameter<ECPrivateKey>(
+        ECPrivateKey(privateKey, ECCurve_prime256v1()));
+    final ec = PKCS1Encoding(RSAEngine());
+    ec.init(true, param);
+    return ec.process(encodedHash);
   }
 
   /// Verify the certificate

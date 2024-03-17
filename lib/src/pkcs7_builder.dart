@@ -1,8 +1,7 @@
 import 'dart:typed_data';
 
-import 'package:pkcs7_gost/src/digest/ozdst1106_digest.dart';
+import 'package:pkcs7_gost/src/crypto/ozdst1106_digest.dart';
 import 'package:pointycastle/asn1.dart';
-import 'package:pointycastle/asymmetric/api.dart';
 
 import 'common.dart';
 import 'crl.dart';
@@ -96,8 +95,8 @@ abstract class Pkcs7SignerInfoBuilder with Pkcs {
   /// Build an RSA Pkcs7 Signer
   factory Pkcs7SignerInfoBuilder.rsa({
     required X509 issuer,
-    HashAlgorithm digestAlgorithm = HashAlgorithm.sha1,
-    required RSAPrivateKey privateKey,
+    HashAlgorithm digestAlgorithm = HashAlgorithm.ozdst1106,
+    required BigInt privateKey,
   }) {
     return _RSAPkcs7SignerInfoBuilder(
       issuer,
@@ -226,12 +225,12 @@ abstract class Pkcs7SignerInfoBuilder with Pkcs {
 /// A Pkcs7 Signer Info Builder
 class _RSAPkcs7SignerInfoBuilder extends Pkcs7SignerInfoBuilder {
   _RSAPkcs7SignerInfoBuilder(
-    X509 issuer,
+    super.issuer,
     this.privateKey,
     this.digestAlgorithm,
-  ) : super(issuer);
+  );
 
-  final RSAPrivateKey privateKey;
+  final BigInt privateKey;
 
   final HashAlgorithm digestAlgorithm;
 

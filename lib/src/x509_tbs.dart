@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:pem/pem.dart';
-import 'package:pkcs7_gost/src/digest/ozdst1106_digest.dart';
+import 'package:pkcs7_gost/src/crypto/ozdst1106_digest.dart';
 import 'package:pointycastle/asn1.dart';
 import 'package:pointycastle/asymmetric/api.dart';
 

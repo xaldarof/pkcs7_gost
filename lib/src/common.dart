@@ -3,24 +3,12 @@
 import 'dart:math';
 import 'dart:typed_data';
 
-import 'package:pkcs7_gost/src/digest/ozdst1106_digest.dart';
+import 'package:pkcs7_gost/src/crypto/ozdst1106_digest.dart';
 import 'package:pointycastle/asn1.dart';
 import 'package:pointycastle/export.dart';
 
 /// Dignature digest to use for document authenticity verification
 enum HashAlgorithm {
-  /// Use sha1 hash
-  sha1,
-
-  /// Use sha256 hash
-  sha256,
-
-  /// Use sha385 hash
-  sha384,
-
-  /// Use sha512 hash
-  sha512,
-
   /// Use ozdst1106 hash
   ozdst1106,
 }

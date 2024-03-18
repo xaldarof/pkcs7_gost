@@ -17,16 +17,16 @@ mixin Pkcs {
   static const emailAddress = '1.2.840.113549.1.9.1';
   static const signedData = '1.2.840.113549.1.7.2';
   static const netscapeComment = '2.16.840.1.113730.1.13';
-  static const sha1WithRsaSignature = '1.2.840.113549.1.1.5';
-  static const ozDSt1106 = '1.3.6.1.4.1.46709.1.2.2'; //todo fix
+  // static const sha1WithRsaSignature = '1.2.840.113549.1.1.5';
+  static const ozDSt1106 = '1.2.860.3.15.1.1.2.2.2.2'; //todo fix
   static const contentType = '1.2.840.113549.1.9.3';
   static const signingTime = '1.2.840.113549.1.9.5';
-  static const messageDigest = '1.2.840.113549.1.9.4';
+  static const messageDigest = '1.3.6.1.4.1.46709.1.2.2';
   static const smimeCapabilities = '1.2.840.113549.1.9.15';
   static const data = '1.2.840.113549.1.7.1';
   static const RsaesPkcs1 = '1.2.840.113549.1.1.1';
   static const sha256Nist = '2.16.840.1.101.3.4.2.1';
-  static const ec256 = '1.2.840.10045.4.3.2';
+  // static const ec256 = '1.2.840.10045.4.3.2';
   static const timestamp = '1.2.840.113549.1.9.16.2.14';
   static const organizationIdentifier = '2.5.4.97';
 

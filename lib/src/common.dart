@@ -186,6 +186,7 @@ extension OIName on ASN1ObjectIdentifier {
       Pkcs.organizationIdentifier: 'organizationIdentifier',
     };
 
+    print(objectIdentifierAsString);
     if (names[objectIdentifierAsString] == null) {
       print('OI not found: $objectIdentifierAsString');
     }

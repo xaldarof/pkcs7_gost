@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:dart_crypto_lib/dart_crypto_lib.dart';
 import 'package:pem/pem.dart';
 import 'package:pkcs7_gost/src/crypto/ozdst1106_digest.dart';
 import 'package:pointycastle/api.dart';
@@ -147,11 +148,13 @@ class X509 extends X509Tbs {
     final encodedHash = derEncode(hash, digestAlgorithm);
 
     // Encrypt the hash with PKCS1 padding
-    final param = PrivateKeyParameter<ECPrivateKey>(
-        ECPrivateKey(privateKey, ECCurve_prime256v1()));
-    final ec = PKCS1Encoding(RSAEngine());
-    ec.init(true, param);
-    return ec.process(encodedHash);
+    // final param = PrivateKeyParameter<ECPrivateKey>(
+    //     ECPrivateKey(privateKey, ECCurve_prime256v1()));
+    // final ec = PKCS1Encoding(RSAEngine());
+    // ec.init(true, param);
+    final signed = CryptoDart.signMessage(encodedHash, privateKey);
+    // return ec.process(encodedHash);
+    return CryptoDart.decodeHex(signed);
   }
 
   /// Verify the certificate

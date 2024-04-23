@@ -15,7 +15,6 @@ dependencies:
     git:
       url: https://Baik-Tech@dev.azure.com/Baik-Tech/Messenger%20Mobile%20and%20Desktop/_git/CryptoCoreDart
       ref: main
-  syncfusion_flutter_pdf: ^25.1.38
 dev_dependencies:
   flutter_test:
     sdk: flutter

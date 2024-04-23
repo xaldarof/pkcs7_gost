@@ -47,13 +47,13 @@ class X509Tbs with Pkcs {
   /// The Public Key Algorithm of the certificate.
   RSAPublicKey get publicKey {
     switch (publicKeyAlgorithmOI.objectIdentifierAsString) {
-      case Pkcs.RsaesPkcs1:
-        final s = ASN1Parser(publicKeyBytes).nextObject() as ASN1Sequence;
-        final asn1Modulus = s.elements![0] as ASN1Integer;
-        final modulus = asn1Modulus.integer!;
-        final asn1Exponent = s.elements![1] as ASN1Integer;
-        final exponent = asn1Exponent.integer!;
-        return RSAPublicKey(modulus, exponent);
+      // case Pkcs.RsaesPkcs1:
+      //   final s = ASN1Parser(publicKeyBytes).nextObject() as ASN1Sequence;
+      //   final asn1Modulus = s.elements![0] as ASN1Integer;
+      //   final modulus = asn1Modulus.integer!;
+      //   final asn1Exponent = s.elements![1] as ASN1Integer;
+      //   final exponent = asn1Exponent.integer!;
+      //   return RSAPublicKey(modulus, exponent);
     }
     throw UnimplementedError('Unknown algorithm ${publicKeyAlgorithmOI.name}');
   }

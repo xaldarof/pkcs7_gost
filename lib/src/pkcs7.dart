@@ -165,9 +165,9 @@ class Pkcs7 with Pkcs {
 
     // One signature should match
     for (final si in signerInfo) {
-      if (si.signatureAlgorithmID.objectIdentifierAsString != Pkcs.RsaesPkcs1) {
-        continue;
-      }
+      // if (si.signatureAlgorithmID.objectIdentifierAsString != Pkcs.RsaesPkcs1) {
+      //   continue;
+      // }
 
       try {
         final algo = si.digestAlgorithm;

@@ -18,7 +18,7 @@ void main() {
   final cert = X509.fromPem(cer.plain ?? "");
   pkcs7Builder.addCertificate(cert);
 
-  final signerInfo = Pkcs7SignerInfoBuilder.rsa(
+  final signerInfo = Pkcs7SignerInfoBuilder.gost(
       issuer: cert,
       privateKey: privateKey,
       digestAlgorithm: HashAlgorithm.ozdst1106);

@@ -93,12 +93,12 @@ abstract class Pkcs7SignerInfoBuilder with Pkcs {
   Pkcs7SignerInfoBuilder(this.issuer);
 
   /// Build an RSA Pkcs7 Signer
-  factory Pkcs7SignerInfoBuilder.rsa({
+  factory Pkcs7SignerInfoBuilder.gost({
     required X509 issuer,
     HashAlgorithm digestAlgorithm = HashAlgorithm.ozdst1106,
     required BigInt privateKey,
   }) {
-    return _RSAPkcs7SignerInfoBuilder(
+    return _GOSTkcs7SignerInfoBuilder(
       issuer,
       privateKey,
       digestAlgorithm,
@@ -223,8 +223,8 @@ abstract class Pkcs7SignerInfoBuilder with Pkcs {
 }
 
 /// A Pkcs7 Signer Info Builder
-class _RSAPkcs7SignerInfoBuilder extends Pkcs7SignerInfoBuilder {
-  _RSAPkcs7SignerInfoBuilder(
+class _GOSTkcs7SignerInfoBuilder extends Pkcs7SignerInfoBuilder {
+  _GOSTkcs7SignerInfoBuilder(
     super.issuer,
     this.privateKey,
     this.digestAlgorithm,

@@ -18,7 +18,7 @@ mixin Pkcs {
   static const signedData = '1.2.840.113549.1.7.2';
   static const netscapeComment = '2.16.840.1.113730.1.13';
 
-  static const ozDSt1106 = '1.2.860.3.15.1.1.2.2.2.2'; //todo fix
+  static const ozDSt1106 = '1.2.860.3.16.1.2'; //todo fix
   static const contentType = '1.2.840.113549.1.9.3';
   static const signingTime = '1.2.840.113549.1.9.5';
   static const messageDigest = '1.3.6.1.4.1.46709.1.2.2';
@@ -30,7 +30,7 @@ mixin Pkcs {
 
   static const Map<HashAlgorithm, List<int>> hashAlgorithmIdentifiers =
       <HashAlgorithm, List<int>>{
-    HashAlgorithm.ozdst1106: <int>[1, 3, 6, 1, 4, 1, 46709, 1, 2, 2],
+    HashAlgorithm.ozdst1106: <int>[1, 2, 860, 3, 16, 1, 2],
   };
 
   String digestIdentifierHex(HashAlgorithm algorithm) {
